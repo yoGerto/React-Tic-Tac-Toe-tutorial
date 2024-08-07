@@ -58,6 +58,7 @@ export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xTurn = currentMove % 2 === 0;
+  const [decending, setDecending] = useState(0);
   const currentSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
@@ -70,6 +71,10 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
+  function ascendingDescending(){
+    setDecending(!decending);
+  }
+
   const moves = history.slice(0, currentMove).map((squares, move) => {
     let description;
     if (move > 0) {
@@ -77,18 +82,28 @@ export default function Game() {
     } else {
       description = "Go to game start";
     }
-
     return (
-      <li key={move}>
+      <li key={move} value={move+1}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
+    
   });
+
+  if (decending == 1){
+    moves.reverse();
+    var buttonDesc = "Ascending";
+  } else {
+    buttonDesc = "Descending";
+  }
 
   return (
     <div className="game">
       <div className="game-board">
         <Board xTurn={xTurn} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div>
+        <button onClick={ascendingDescending}>{buttonDesc}</button>
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
