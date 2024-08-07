@@ -1,4 +1,4 @@
-This repository contains the files generated during this tutorial.
+This repository contains the files generated during this tutorial. <br />
 https://react.dev/learn/tutorial-tic-tac-toe
 I am working on completing the stretch goals which are listed at the end of the tutorial. 
 I hope these will help me get a better understanding of how to structure React code and how to code in JavaScript.
